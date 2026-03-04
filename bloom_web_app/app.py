@@ -1,5 +1,5 @@
 # =======================
-# Clasificador de Verbos – Taxonomía de Bloom (Streamlit)
+# Clasificador de Verbos – TAXOMANIA de BlOOM (Streamlit)
 # =======================
 
 import json
