@@ -27,8 +27,14 @@ MAPA_VERBO_NIVEL = {norm(v): nivel for nivel, lista in VERBOS_BLOOM.items() for 
 TODOS_VERBOS = list(MAPA_VERBO_NIVEL.keys())
 
 # ---------------------------- UI helpers ------------------------------------
+
 def badge(texto: str, bg: str, fg: str = "#0A2540"):
-    return f"<span style="display:inline-block; padding:6px 10px; margin:4px; border-radius:999px; background:{bg}; color:{fg}; font-size:14px; font-weight:600;">{texto}</span>"
+    return (
+        f"<span style=\"display:inline-block; padding:6px 10px; "
+        f"margin:4px; border-radius:999px; background:{bg}; "
+        f"color:{fg}; font-size:14px; font-weight:600;\">{texto}</span>"
+    )
+
 
 def card(title: str, body_html: str, color: str):
     return ("<div style="border:1px solid rgba(255,255,255,0.15); border-left:6px solid " + color + 
