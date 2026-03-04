@@ -26,22 +26,27 @@ NIVEL_COLOR = {
 MAPA_VERBO_NIVEL = {norm(v): nivel for nivel, lista in VERBOS_BLOOM.items() for v in lista}
 TODOS_VERBOS = list(MAPA_VERBO_NIVEL.keys())
 
-# ---------------------------- UI helpers ------------------------------------
 
+# ---------------------------- UI helpers ------------------------------------
 def badge(texto: str, bg: str, fg: str = "#0A2540"):
+    # Chip/etiqueta en HTML sin llaves literales en CSS
     return (
-        f"<span style=\"display:inline-block; padding:6px 10px; "
-        f"margin:4px; border-radius:999px; background:{bg}; "
-        f"color:{fg}; font-size:14px; font-weight:600;\">{texto}</span>"
+        f"<span style='display:inline-block; padding:6px 10px; margin:4px; "
+        f"border-radius:999px; background:{bg}; color:{fg}; "
+        f"font-size:14px; font-weight:600;'>{texto}</span>"
     )
 
-
 def card(title: str, body_html: str, color: str):
-    return ("<div style="border:1px solid rgba(255,255,255,0.15); border-left:6px solid " + color + 
-            "; background:rgba(255,255,255,0.05); border-radius:10px; padding:16px; margin-top:12px;">" +
-            "<div style="font-size:18px; font-weight:700; color:" + color + ";">" + title + "</div>" +
-            "<div style="margin-top:8px; line-height:1.5;">" + body_html + "</div>" +
-            "</div>")
+    # Tarjeta con borde izquierdo de color; todo en f-strings bien formados
+    return (
+        f"<div style='border:1px solid rgba(255,255,255,0.15); "
+        f"border-left:6px solid {color}; "
+        f"background:rgba(255,255,255,0.05); border-radius:10px; "
+        f"padding:16px; margin-top:12px;'>"
+        f"<div style='font-size:18px; font-weight:700; color:{color};'>{title}</div>"
+        f"<div style='margin-top:8px; line-height:1.5;'>{body_html}</div>"
+        f"</div>"
+    )
 
 # ----------------------------- APP ------------------------------------------
 st.set_page_config(page_title="Clasificador Bloom (Web)", page_icon="🧠", layout="centered")
