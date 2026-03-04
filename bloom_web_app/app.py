@@ -10,21 +10,19 @@ def strip_accents(s: str) -> str:
 def norm(txt: str) -> str:
     return strip_accents(txt.strip().lower())
 
+
 # ---------------------------- Carga de datos --------------------------------
-with open('data/verbos.json', 'r', encoding='utf-8') as f:
+import json
+import unicodedata
+from difflib import get_close_matches
+from pathlib import Path
+
+# Ruta del directorio donde está este app.py
+BASE_DIR = Path(__file__).parent
+
+# Carga segura del JSON siempre relativo a app.py
+with open(BASE_DIR / 'data' / 'verbos.json', 'r', encoding='utf-8') as f:
     VERBOS_BLOOM = json.load(f)
-
-NIVEL_COLOR = {
-    "Recordar": "#64B5F6",
-    "Comprender": "#4FC3F7",
-    "Aplicar": "#4DD0E1",
-    "Analizar": "#4DB6AC",
-    "Evaluar": "#81C784",
-    "Crear": "#BA68C8",
-}
-
-MAPA_VERBO_NIVEL = {norm(v): nivel for nivel, lista in VERBOS_BLOOM.items() for v in lista}
-TODOS_VERBOS = list(MAPA_VERBO_NIVEL.keys())
 
 
 # ---------------------------- UI helpers ------------------------------------
